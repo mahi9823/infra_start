@@ -7,7 +7,7 @@ variable "rgs" {
   }))
 }
 
-variable "networks" {
+variable "networks" { 
   type = map(any)
 }
 variable "public_ips" {
@@ -26,7 +26,7 @@ variable "vm_username" {
 variable "vm_password" {
   description = "Password for VM admin"
   type        = string
-  default     = "P@ssw0rd123!"
+  default     = "Hunter@350"
 }
 
 variable "vms" {
