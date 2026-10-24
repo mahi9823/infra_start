@@ -2,13 +2,13 @@ vms = {
   vm1 = {
     nic_name    = "nic-frontend-vm"
     location    = "centralindia"
-    rg_name     = "rg-mahesh"
+    rg_name     = "jenkins-rg"
     vnet_name   = "vnet-mahesh-dev"
     subnet_name = "frontend-subnet"
     pip_name    = "pip-mahesh-dev-01"
     vm_name     = "frontend-vm"
-    size        = "Standard_F2"
-    kv_name     = "kv-mahesh-kv"
+    size        = "Standard_B2s_v2"
+    kv_name     = "jenkins-kv"
     source_image_reference = {
       publisher = "Canonical"
       offer     = "0001-com-ubuntu-server-jammy"
@@ -16,28 +16,28 @@ vms = {
       version   = "latest"
     }
   }
-  vm2 = {
+   vm2 = {
     nic_name    = "nic-backend-vm"
     location    = "centralindia"
-    rg_name     = "rg-mahesh"
+    rg_name     = "jenkins-rg"
     vnet_name   = "vnet-mahesh-dev"
     subnet_name = "backend-subnet"
     pip_name    = "pip-mahesh-dev-02"
     vm_name     = "backend-vm"
     size        = "Standard_F2"
-    kv_name     = "kv-mahesh-kv"
+    kv_name     = "jenkins-kv"
     source_image_reference = {
       publisher = "Canonical"
       offer     = "0001-com-ubuntu-server-jammy"
       sku       = "22_04-lts"
       version   = "latest"
     }
-  }
+  } 
 }
 
 rgs = {
   rg1 = {
-    name       = "rg-mahesh"
+    name       = "jenkins-rg"
     location   = "centralindia"
     managed_by = "Terraform"
     tags = {
@@ -50,7 +50,7 @@ networks = {
   vnet1 = {
     name                = "vnet-mahesh-dev"
     location            = "centralindia"
-    resource_group_name = "rg-mahesh"
+    resource_group_name = "jenkins-rg"
     address_space       = ["10.0.0.0/16"]
     tags = {
       environment = "dev"
@@ -71,7 +71,7 @@ networks = {
 public_ips = {
   app1 = {
     name                = "pip-mahesh-dev-01"
-    resource_group_name = "rg-mahesh"
+    resource_group_name = "jenkins-rg"
     location            = "centralindia"
     allocation_method   = "Static"
     tags = {
@@ -81,7 +81,7 @@ public_ips = {
   }
   app2 = {
     name                = "pip-mahesh-dev-02"
-    resource_group_name = "rg-mahesh"
+    resource_group_name = "jenkins-rg"
     location            = "centralindia"
     allocation_method   = "Static"
     tags = {
@@ -94,8 +94,9 @@ public_ips = {
 
 key_vaults = {
   kv1 = {
-    kv_name  = "kv-mahesh-kv"
+    kv_name  = "jenkins-kv"
     location = "centralindia"
-    rg_name  = "rg-mahesh"
+    rg_name  = "jenkins-rg"
   }
 }
+  
