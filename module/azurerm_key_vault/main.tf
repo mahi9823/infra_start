@@ -38,9 +38,11 @@ resource "azurerm_key_vault" "kv" {
 }
 
 resource "azurerm_key_vault_secret" "vm_username" {
-  name         = "vm-username"
-  value        = var.vm_username
-  key_vault_id = azurerm_key_vault.kv["kv1"].id
+  name            = "vm-username"
+  value           = var.vm_username
+  key_vault_id    = azurerm_key_vault.kv["kv1"].id
+  content_type    = "text/plain"
+  expiration_date = "2027-10-24T00:00:00Z"
 
   lifecycle {
     ignore_changes = [value]
@@ -48,9 +50,11 @@ resource "azurerm_key_vault_secret" "vm_username" {
 }
 
 resource "azurerm_key_vault_secret" "vm_password" {
-  name         = "vm-password"
-  value        = var.vm_password
-  key_vault_id = azurerm_key_vault.kv["kv1"].id
+  name            = "vm-password"
+  value           = var.vm_password
+  key_vault_id    = azurerm_key_vault.kv["kv1"].id
+  content_type    = "text/plain"
+  expiration_date = "2027-10-24T00:00:00Z"
 
   lifecycle {
     ignore_changes = [value]
